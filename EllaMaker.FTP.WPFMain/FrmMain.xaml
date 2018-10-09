@@ -1,0 +1,25 @@
+﻿<Window x:Class="EllaMaker.FTP.View.FrmMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EllaMaker.FTP.View"
+        xmlns:userControls="clr-namespace:EllaMakerFTP.UserControls;assembly=EllaMakerFTP.UserControls"
+        xmlns:cmp="clr-namespace:EllaMaker.FTP.Component;assembly=EllaMaker.FTP.Component"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="332.833" Width="953.433" WindowStyle="None">
+    <DockPanel>
+        <userControls:MainToolBar DockPanel.Dock="Top"></userControls:MainToolBar>
+        <StackPanel DockPanel.Dock="Left" Height="0">
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Right" Width="0">
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Height="0">
+        </StackPanel>
+        <StackPanel x:Name="contextPanel">
+            <userControls:BookListControl Width="Auto" Height="Auto" />
+        </StackPanel>
+        
+    </DockPanel>
+</Window>

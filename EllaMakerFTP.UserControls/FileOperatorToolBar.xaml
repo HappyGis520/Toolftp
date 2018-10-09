@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="EllaMakerFTP.UserControls.FileOperatorToolBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EllaMakerFTP.UserControls"
+             mc:Ignorable="d" Height="27.039" Width="374.034">
+    <Grid>
+        <TextBlock>文件资源操作控件</TextBlock>
+            
+    </Grid>
+</UserControl>

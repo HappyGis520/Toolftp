@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.Model", "EllaMaker.Model\EllaMaker.FTP.Model.csproj", "{9E46E6E1-2D3C-451F-98EE-4A67C8123D79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.Core", "EllaMaker.FTP.Core\EllaMaker.FTP.Core.csproj", "{14B75D26-49DF-47FA-A4C6-17456987D604}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.Services", "EllMaker.FTP.Controller\EllaMaker.FTP.Services.csproj", "{CB419ECE-5867-421F-BCC3-C07BB1959285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.BLL", "EllaMaker.FTP.BLL\EllaMaker.FTP.BLL.csproj", "{7AAD383B-8153-4B6A-B23E-E800509CF143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.View", "EllaMaker.FTP.WPFMain\EllaMaker.FTP.View.csproj", "{653937F7-7014-4203-8A6B-7814FFC15B57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.ViewModel", "EllaMakerFTP.ViewModel\EllaMaker.FTP.ViewModel.csproj", "{D532E604-66D8-434D-810C-E4CD700873BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.UserControls", "EllaMakerFTP.UserControls\EllaMaker.FTP.UserControls.csproj", "{62D7C5DB-5887-4216-A7D9-DFB7B27890A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.Component", "EllaMaker.FTP.Component\EllaMaker.FTP.Component.csproj", "{9934FF7C-5596-4C18-B9F9-68C21A0F7911}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E46E6E1-2D3C-451F-98EE-4A67C8123D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E46E6E1-2D3C-451F-98EE-4A67C8123D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E46E6E1-2D3C-451F-98EE-4A67C8123D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E46E6E1-2D3C-451F-98EE-4A67C8123D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B75D26-49DF-47FA-A4C6-17456987D604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B75D26-49DF-47FA-A4C6-17456987D604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B75D26-49DF-47FA-A4C6-17456987D604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B75D26-49DF-47FA-A4C6-17456987D604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB419ECE-5867-421F-BCC3-C07BB1959285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB419ECE-5867-421F-BCC3-C07BB1959285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB419ECE-5867-421F-BCC3-C07BB1959285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB419ECE-5867-421F-BCC3-C07BB1959285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AAD383B-8153-4B6A-B23E-E800509CF143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AAD383B-8153-4B6A-B23E-E800509CF143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AAD383B-8153-4B6A-B23E-E800509CF143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AAD383B-8153-4B6A-B23E-E800509CF143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{653937F7-7014-4203-8A6B-7814FFC15B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653937F7-7014-4203-8A6B-7814FFC15B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653937F7-7014-4203-8A6B-7814FFC15B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653937F7-7014-4203-8A6B-7814FFC15B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D532E604-66D8-434D-810C-E4CD700873BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D532E604-66D8-434D-810C-E4CD700873BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D532E604-66D8-434D-810C-E4CD700873BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D532E604-66D8-434D-810C-E4CD700873BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62D7C5DB-5887-4216-A7D9-DFB7B27890A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D7C5DB-5887-4216-A7D9-DFB7B27890A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D7C5DB-5887-4216-A7D9-DFB7B27890A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D7C5DB-5887-4216-A7D9-DFB7B27890A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9934FF7C-5596-4C18-B9F9-68C21A0F7911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9934FF7C-5596-4C18-B9F9-68C21A0F7911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9934FF7C-5596-4C18-B9F9-68C21A0F7911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9934FF7C-5596-4C18-B9F9-68C21A0F7911}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04CB2928-8DA3-4819-AEC3-9C1792BD8CAB}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal
