@@ -5,13 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EllaMakerFTP.UserControls"
              mc:Ignorable="d" Height="296.781" Width="574.249">
-    <DataGrid  RowHeaderWidth="0"  x:Name="dgvList" AlternationCount="2"  AutoGenerateColumns="False" FontSize="20" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Hidden" EnableRowVirtualization="False" IsEnabled="True" EnableColumnVirtualization="False" VerticalGridLinesBrush="#FFBCC1BC" HorizontalGridLinesBrush="#FFBCC1BC">
+    <DataGrid  RowHeaderWidth="0"  x:Name="dgvList" AlternationCount="2"  AutoGenerateColumns="False" FontSize="20" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Hidden" EnableRowVirtualization="False" IsEnabled="True" EnableColumnVirtualization="False" VerticalGridLinesBrush="#FFBCC1BC" HorizontalGridLinesBrush="#FFBCC1BC" BorderThickness="0">
         <DataGrid.ColumnHeaderStyle>
             <Style TargetType="DataGridColumnHeader">
                 <Setter Property="FontFamily" Value="SimHei"/>
                 <Setter Property="Foreground" Value="#104E8B"/>
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="Height" Value="Auto" />
+                <Setter Property="Height" Value="Auto"  />
+                <Setter Property="MinWidth" Value="30"></Setter>
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
             </Style>
