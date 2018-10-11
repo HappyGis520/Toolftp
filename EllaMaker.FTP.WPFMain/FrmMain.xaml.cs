@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EllaMaker.FTP.Messages;
 
 namespace EllaMaker.FTP.View
 {
@@ -23,5 +24,14 @@ namespace EllaMaker.FTP.View
         {
             InitializeComponent();
         }
+
+        private void FrmMain_OnClick(object sender,  RoutedEventArgs e)
+        {
+            var ee = e as MainToolBarClickArgs;
+            var obj = sender as FrameworkElement;
+            MessageBox.Show(obj.GetType().ToString());
+        }
+
+
     }
 }

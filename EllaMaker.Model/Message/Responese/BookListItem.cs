@@ -19,16 +19,16 @@ namespace EllaMaker.FTP.Model
 	{
 		private string isbn;
 		/*图书名称*/
-		public string bookName;
+		public string _BookName;
 		/*出版社名称*/
-		public string PublisherName_Renamed;
+		public string _PublisherName;
 		/*图书系列名称*/
-		private string BookSetName_Renamed;
+		private string _BookSetName;
 		/*关联电子书数量*/
-		private int EBookCount_Renamed;
+		private int _EBookCount;
 		/*是否可见*/
-		private bool Visibled_Renamed;
-		public virtual string Isbn
+		private bool _Visibled;
+		public  string Isbn
 		{
 			get
 			{
@@ -45,63 +45,63 @@ namespace EllaMaker.FTP.Model
 		{
 			get
 			{
-				return bookName;
+				return _BookName;
 			}
 			set
 			{
-				this.bookName = value;
+				this._BookName = value;
 			}
 		}
 
 
-		public virtual string PublisherName
+		public  string PublisherName
 		{
 			get
 			{
-				return PublisherName_Renamed;
+				return _PublisherName;
 			}
 			set
 			{
-				PublisherName_Renamed = value;
+                _PublisherName = value;
 			}
 		}
 
 
-		public virtual string BookSetName
+		public  string BookSetName
 		{
 			get
 			{
-				return BookSetName_Renamed;
+				return _BookSetName;
 			}
 			set
 			{
-				BookSetName_Renamed = value;
+				_BookSetName = value;
 			}
 		}
 
 
-		public virtual int EBookCount
+		public  int EBookCount
 		{
 			get
 			{
-				return EBookCount_Renamed;
+				return _EBookCount;
 			}
 			set
 			{
-				this.EBookCount_Renamed = value;
+				this._EBookCount = value;
 			}
 		}
 
 
-		public virtual bool Visibled
+		public  bool Visibled
 		{
 			get
 			{
-				return Visibled_Renamed;
+				return _Visibled;
 			}
 			set
 			{
-				Visibled_Renamed = value;
+				_Visibled = value;
 			}
 		}
 

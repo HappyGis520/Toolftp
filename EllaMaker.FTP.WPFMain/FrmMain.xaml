@@ -8,9 +8,10 @@
         xmlns:cmp="clr-namespace:EllaMaker.FTP.Component;assembly=EllaMaker.FTP.Component"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         mc:Ignorable="d"
+        userControls:MainToolBar.ButtonClick="FrmMain_OnClick"
         Title="MainWindow" Height="332.833" Width="953.433" WindowStyle="None">
     <DockPanel>
-        <userControls:MainToolBar DockPanel.Dock="Top"></userControls:MainToolBar>
+        <userControls:MainToolBar DockPanel.Dock="Top" userControls:MainToolBar.ButtonClick="FrmMain_OnClick"></userControls:MainToolBar>
         <StackPanel DockPanel.Dock="Left" Height="0">
         </StackPanel>
         <StackPanel DockPanel.Dock="Right" Width="0">

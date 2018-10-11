@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EllaMakerFTP.UserControls
+namespace EllaMaker.FTP.UserControls
 {
     /// <summary>
-    /// UserControl1.xaml 的交互逻辑
+    /// BookResourceManagerControl.xaml 的交互逻辑
     /// </summary>
-    public partial class MainToolBar : UserControl
+    public partial class BookResourceManagerControl : UserControl
     {
-        public MainToolBar()
+        public BookResourceManagerControl()
         {
             InitializeComponent();
-        }
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }

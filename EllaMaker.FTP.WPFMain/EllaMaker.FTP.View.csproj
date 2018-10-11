@@ -114,11 +114,15 @@
       <Project>{9934ff7c-5596-4c18-b9f9-68c21a0f7911}</Project>
       <Name>EllaMaker.FTP.Component</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EllaMakerFTP.UserControls\EllaMaker.FTP.UserControls.csproj">
+    <ProjectReference Include="..\EllaMaker.Model\EllaMaker.FTP.Model.csproj">
+      <Project>{9e46e6e1-2d3c-451f-98ee-4a67c8123d79}</Project>
+      <Name>EllaMaker.FTP.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllaMaker.FTP.UserControls\EllaMaker.FTP.UserControls.csproj">
       <Project>{62d7c5db-5887-4216-a7d9-dfb7b27890a8}</Project>
       <Name>EllaMaker.FTP.UserControls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EllaMakerFTP.ViewModel\EllaMaker.FTP.ViewModel.csproj">
+    <ProjectReference Include="..\EllaMaker.FTP.ViewModel\EllaMaker.FTP.ViewModel.csproj">
       <Project>{d532e604-66d8-434d-810c-e4cd700873ba}</Project>
       <Name>EllaMaker.FTP.ViewModel</Name>
     </ProjectReference>

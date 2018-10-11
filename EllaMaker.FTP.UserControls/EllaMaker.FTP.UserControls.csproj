@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{62D7C5DB-5887-4216-A7D9-DFB7B27890A8}</ProjectGuid>
     <OutputType>library</OutputType>
-    <RootNamespace>EllaMakerFTP.UserControls</RootNamespace>
-    <AssemblyName>EllaMakerFTP.UserControls</AssemblyName>
+    <RootNamespace>EllaMaker.FTP.UserControls</RootNamespace>
+    <AssemblyName>EllaMaker.FTP.UserControls</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -54,6 +54,12 @@
       <DependentUpon>BookListControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="NavigateDir.xaml.cs">
+      <DependentUpon>NavigateDir.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pager.xaml.cs">
+      <DependentUpon>Pager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,11 +98,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NavigateDir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EllaMaker.FTP.Component\EllaMaker.FTP.Component.csproj">
       <Project>{9934ff7c-5596-4c18-b9f9-68c21a0f7911}</Project>
       <Name>EllaMaker.FTP.Component</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllaMaker.Model\EllaMaker.FTP.Model.csproj">
+      <Project>{9e46e6e1-2d3c-451f-98ee-4a67c8123d79}</Project>
+      <Name>EllaMaker.FTP.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllaMaker.FTP.ViewModel\EllaMaker.FTP.ViewModel.csproj">
+      <Project>{d532e604-66d8-434d-810c-e4cd700873ba}</Project>
+      <Name>EllaMaker.FTP.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.BLL", "EllaMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.View", "EllaMaker.FTP.WPFMain\EllaMaker.FTP.View.csproj", "{653937F7-7014-4203-8A6B-7814FFC15B57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.ViewModel", "EllaMakerFTP.ViewModel\EllaMaker.FTP.ViewModel.csproj", "{D532E604-66D8-434D-810C-E4CD700873BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.ViewModel", "EllaMaker.FTP.ViewModel\EllaMaker.FTP.ViewModel.csproj", "{D532E604-66D8-434D-810C-E4CD700873BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.UserControls", "EllaMakerFTP.UserControls\EllaMaker.FTP.UserControls.csproj", "{62D7C5DB-5887-4216-A7D9-DFB7B27890A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.UserControls", "EllaMaker.FTP.UserControls\EllaMaker.FTP.UserControls.csproj", "{62D7C5DB-5887-4216-A7D9-DFB7B27890A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.Component", "EllaMaker.FTP.Component\EllaMaker.FTP.Component.csproj", "{9934FF7C-5596-4C18-B9F9-68C21A0F7911}"
 EndProject
