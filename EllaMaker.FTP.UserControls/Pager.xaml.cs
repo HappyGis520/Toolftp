@@ -25,6 +25,9 @@ namespace EllaMaker.FTP.UserControls
         /// 总页数
         /// </summary>
         public static readonly DependencyProperty TotalPageProperty;
+        /// <summary>
+        /// 每页数量
+        /// </summary>
         public int PageSize
         {
             get { return (int)GetValue(PageSizeProperty); }
@@ -46,12 +49,10 @@ namespace EllaMaker.FTP.UserControls
             get { return (string)GetValue(TotalPageProperty); }
             set { SetValue(TotalPageProperty, value); }
         }
-
         public Pager()
         {
             InitializeComponent();
         }
-
         static Pager()
         {
             FirstPageEvent = EventManager.RegisterRoutedEvent("FirstPage", RoutingStrategy.Direct, typeof(EventHandler<PageNavigateArgs>), typeof(Pager));

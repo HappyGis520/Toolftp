@@ -13,7 +13,7 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="FirstPageButton" Margin="5,0" Click="FirstPageButton_Click">
+            <Button x:Name="FirstPageButton" Margin="5,0" Click="FirstPageButton_Click" >
                 <Path Width="7" Height="10" Data="M0,0L0,10 M0,5L6,2 6,8 0,5" Stroke="Black" StrokeThickness="1" Fill="Black" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </Button>
             <Button x:Name="PreviousPageButton" Margin="0,0,5,0" Click="PreviousPageButton_Click">
