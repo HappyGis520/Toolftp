@@ -3,14 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EllaMaker.FTP.UserControls"
-             mc:Ignorable="d" Height="296.781" Width="574.249">
+             xmlns:Comp="clr-namespace:EllaMaker.FTP.Component;assembly=EllaMaker.FTP.Component"
+             mc:Ignorable="d" d:DesignHeight="200" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="22"/>
+            <Setter Property="Height" Value="22"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-    <DataGrid  RowHeaderWidth="0"  x:Name="dgvList" AlternationCount="2"  AutoGenerateColumns="False" FontSize="15" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Hidden" EnableRowVirtualization="False" IsEnabled="True" EnableColumnVirtualization="False" VerticalGridLinesBrush="#FFBCC1BC" HorizontalGridLinesBrush="#FFBCC1BC" BorderThickness="0">
+    <DataGrid  RowHeaderWidth="0"  x:Name="dgvList" AlternationCount="2"  
+               AutoGenerateColumns="False" FontSize="15" CanUserAddRows="False" 
+               CanUserDeleteRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Hidden"
+               EnableRowVirtualization="False" IsEnabled="True" EnableColumnVirtualization="False" 
+               VerticalGridLinesBrush="#FFBCC1BC" HorizontalGridLinesBrush="#FFBCC1BC" BorderThickness="0">
         <DataGrid.ColumnHeaderStyle>
             <Style TargetType="DataGridColumnHeader">
                 <Setter Property="FontFamily" Value="SimHei"/>
@@ -36,20 +46,16 @@
                 <Setter Property="FontFamily" Value="SimHei"/>
             </Style>
         </DataGrid.RowStyle>
-
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="ISBN"  Binding="{Binding Isbn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-            <DataGridTextColumn Header="名称"  Binding="{Binding BookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-            <DataGridTextColumn Header="系列书名" Binding="{Binding BookSetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-            <DataGridTextColumn Header="出版社" Binding="{Binding PublisherName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-            <DataGridTextColumn Header="作者" Binding="{Binding NAME, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-            <DataGridTextColumn Header="动画书数量 " Binding="{Binding EBookCount_Renamed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-            <DataGridTextColumn Header="操作 " Binding="{Binding NAME2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-        </DataGrid.Columns>
-       
-    </DataGrid>
-        <local:Pager Grid.Row="1" HorizontalAlignment="Right" FirstPage="Pager_FirstPage" Margin="0,1,5,1"/>
-
-
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ISBN"  Binding="{Binding Isbn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header="名称"  Binding="{Binding BookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header="系列书名" Binding="{Binding BookSetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header="出版社" Binding="{Binding PublisherName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header="作者" Binding="{Binding NAME, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header="动画书数量 " Binding="{Binding EBookCount_Renamed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header="操作 " Binding="{Binding NAME2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    <Comp:EllaPager Grid.Row="1" HorizontalContentAlignment="Right"></Comp:EllaPager>
     </Grid>
 </UserControl>

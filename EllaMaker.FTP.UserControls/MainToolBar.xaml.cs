@@ -12,32 +12,56 @@ namespace EllaMaker.FTP.UserControls
     public partial class MainToolBar : UserControl
     {
         #region 路由事件
-        public static readonly RoutedEvent ButtonClickEvent =
-            EventManager.RegisterRoutedEvent("ButtonClick", RoutingStrategy.Tunnel, typeof(EventHandler<MainToolBarClickArgs>),
+        /// <summary>
+        /// 主工具栏点击事件
+        /// </summary>
+        public static readonly RoutedEvent MailToolClickEvent =
+            EventManager.RegisterRoutedEvent("MailToolClickClick", RoutingStrategy.Direct, typeof(EventHandler<MainToolBarClickArgs>),
                 typeof(MainToolBar));
-        public event RoutedEventHandler ButtonClick
+        public event RoutedEventHandler MailToolClick
         {
-            add { this.AddHandler(ButtonClickEvent, value); }
-            remove { this.RemoveHandler(ButtonClickEvent, value); }
+            add { this.AddHandler(MailToolClickEvent, value); }
+            remove { this.RemoveHandler(MailToolClickEvent, value); }
         }
-        #endregion
-        #region
-        private RoutedCommand MainToolClick = new RoutedCommand("MainToolClick", typeof(MainToolBar));
-        private CommandBinding cb = null;
         #endregion
         public MainToolBar()
         {
             InitializeComponent();
-            cb = new CommandBinding(MainToolClick, ExcutMainToolClick, CanExcutMainToolClick);
-            this.grdBound.CommandBindings.Add(cb);
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            
-            MainToolBarClickArgs args = new MainToolBarClickArgs(ButtonClickEvent,e.Source);
-            args.Data = "wjj";
-           this.RaiseEvent(args);
+            var _btn = sender as Button;
+            switch (_btn.Tag.ToString())
+            {
+                case "1":
+                    this.RaiseEvent(new MainToolBarClickArgs(MailToolClickEvent,this,EnumMainToolButton.LOADBOOK));
+                    break;
+                case "2":
+                    this.RaiseEvent(new MainToolBarClickArgs(MailToolClickEvent, this, EnumMainToolButton.LOADEBOOK));
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                case "6":
+                    break;
+                case "7":
+                    break;
+                case "8":
+                    break;
+                case "9":
+                    break;
+                case "0":
+                    break;
+
+
+
+
+            }
+
         }
 
         private void ExcutMainToolClick(object sender, ExecutedRoutedEventArgs e)

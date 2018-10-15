@@ -3,8 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="296.781" Width="574.249">
-    <DataGrid  RowHeaderWidth="0"  x:Name="dgvList" AlternationCount="2"  AutoGenerateColumns="False" FontSize="15" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Hidden" EnableRowVirtualization="False" IsEnabled="True" EnableColumnVirtualization="False" VerticalGridLinesBrush="#FFBCC1BC" HorizontalGridLinesBrush="#FFBCC1BC" Height="297" VerticalAlignment="Top" BorderThickness="0">
+             xmlns:comp="clr-namespace:EllaMaker.FTP.Component;assembly=EllaMaker.FTP.Component"
+             mc:Ignorable="d"  d:DesignWidth="500" d:DesignHeight="200" >
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="22"/>
+            <Setter Property="Height" Value="22"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <DataGrid  RowHeaderWidth="0"  x:Name="dgvList" AlternationCount="2"  AutoGenerateColumns="False" FontSize="15" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Hidden" EnableRowVirtualization="False" IsEnabled="True" EnableColumnVirtualization="False" VerticalGridLinesBrush="#FFBCC1BC" HorizontalGridLinesBrush="#FFBCC1BC"  VerticalAlignment="Top" BorderThickness="0">
         <DataGrid.ColumnHeaderStyle>
             <Style TargetType="DataGridColumnHeader">
                 <Setter Property="FontFamily" Value="SimHei"/>
@@ -38,5 +50,7 @@
             <DataGridTextColumn  Header="操 作" Binding="{Binding NAME2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
         </DataGrid.Columns>
        
-    </DataGrid>
+        </DataGrid>
+        <comp:EllaPager Grid.Row="1" HorizontalContentAlignment="Right"></comp:EllaPager>
+    </Grid>
 </UserControl>

@@ -1,15 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using EllaMaker.FTP.ViewModel;
 using System;
 
-namespace EllaMaker.FTP.UserControls
+namespace EllaMaker.FTP.Component
 {
     /// <summary>
     /// Interaction logic for Pager.xaml
     /// </summary>
-    public partial class Pager : UserControl
+    public partial class EllaPager : UserControl
     {
         public static RoutedEvent FirstPageEvent;
         public static RoutedEvent PreviousPageEvent;
@@ -49,24 +48,24 @@ namespace EllaMaker.FTP.UserControls
             get { return (string)GetValue(TotalPageProperty); }
             set { SetValue(TotalPageProperty, value); }
         }
-        public Pager()
+        public EllaPager()
         {
             InitializeComponent();
         }
-        static Pager()
+        static EllaPager()
         {
-            FirstPageEvent = EventManager.RegisterRoutedEvent("FirstPage", RoutingStrategy.Direct, typeof(EventHandler<PageNavigateArgs>), typeof(Pager));
-            PreviousPageEvent = EventManager.RegisterRoutedEvent("PreviousPage", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(Pager));
-            NextPageEvent = EventManager.RegisterRoutedEvent("NextPage", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(Pager));
-            LastPageEvent = EventManager.RegisterRoutedEvent("LastPage", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(Pager));
+            FirstPageEvent = EventManager.RegisterRoutedEvent("FirstPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPager));
+            PreviousPageEvent = EventManager.RegisterRoutedEvent("PreviousPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPager));
+            NextPageEvent = EventManager.RegisterRoutedEvent("NextPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPager));
+            LastPageEvent = EventManager.RegisterRoutedEvent("LastPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPager));
 
-            CurrentPageProperty = DependencyProperty.Register("CurrentPage", typeof(string), typeof(Pager), new PropertyMetadata(string.Empty,new PropertyChangedCallback(OnCurrentPageChanged)));
-            TotalPageProperty = DependencyProperty.Register("TotalPage", typeof(string), typeof(Pager), new PropertyMetadata(string.Empty,new PropertyChangedCallback(OnTotalPageChanged)));
+            CurrentPageProperty = DependencyProperty.Register("CurrentPage", typeof(string), typeof(EllaPager), new PropertyMetadata(string.Empty,new PropertyChangedCallback(OnCurrentPageChanged)));
+            TotalPageProperty = DependencyProperty.Register("TotalPage", typeof(string), typeof(EllaPager), new PropertyMetadata(string.Empty,new PropertyChangedCallback(OnTotalPageChanged)));
         }
         /// <summary>
         /// 第一页
         /// </summary>
-        public event EventHandler<PageNavigateArgs> FirstPage
+        public event RoutedEventHandler FirstPage
         {
             add { AddHandler(FirstPageEvent, value); }
             remove { RemoveHandler(FirstPageEvent, value); }
@@ -102,7 +101,7 @@ namespace EllaMaker.FTP.UserControls
         /// <param name="e"></param>
         public static void OnTotalPageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Pager p = d as Pager;
+            EllaPager p = d as EllaPager;
 
             if(p != null)
             {
@@ -118,7 +117,7 @@ namespace EllaMaker.FTP.UserControls
         /// <param name="e"></param>
         private static void OnCurrentPageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Pager p = d as Pager;
+            EllaPager p = d as EllaPager;
 
             if(p != null)
             {
@@ -128,13 +127,10 @@ namespace EllaMaker.FTP.UserControls
             }
         }
 
-        private void FirstPageButton_Click(object sender, EventHandler<PageNavigateArgs> e)
+        private void FirstPageButton_Click(object sender, RoutedEventArgs e)
         {
-            Model.ListByPageParam = new Model.ListByPageParam()
-            {
-                PageIndex = 
-            }
-            RaiseEvent(new PageNavigateArgs(FirstPageEvent, this,new Model.ListByPageParam());
+
+            RaiseEvent(new RoutedEventArgs(FirstPageEvent, this));
         }
 
         private void PreviousPageButton_Click(object sender, RoutedEventArgs e)

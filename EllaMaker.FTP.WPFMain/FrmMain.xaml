@@ -4,23 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EllaMaker.FTP.View"
-        xmlns:userControls="clr-namespace:EllaMakerFTP.UserControls;assembly=EllaMakerFTP.UserControls"
         xmlns:cmp="clr-namespace:EllaMaker.FTP.Component;assembly=EllaMaker.FTP.Component"
+        xmlns:userControls="clr-namespace:EllaMaker.FTP.UserControls;assembly=EllaMaker.FTP.UserControls"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         mc:Ignorable="d"
-        userControls:MainToolBar.ButtonClick="FrmMain_OnClick"
-        Title="MainWindow" Height="332.833" Width="953.433" WindowStyle="None">
+        Title="MainWindow" Height="332.833" Width="953.433" WindowStyle="None" 
+               cmp:EllaPager.FirstPage = "FirstPageButton_Click"
+               cmp:EllaPager.NextPage = "NextPageButton_Click"
+               cmp:EllaPager.LastPage = "LastPageButton_Click"
+               cmp:EllaPager.PreviousPage = "PreviousPageButton_Click" >
     <DockPanel>
-        <userControls:MainToolBar DockPanel.Dock="Top" userControls:MainToolBar.ButtonClick="FrmMain_OnClick"></userControls:MainToolBar>
+        <userControls:MainToolBar DockPanel.Dock="Top" MailToolClick="MainToolBar_OnMailToolClick" >
+            
+        </userControls:MainToolBar>
         <StackPanel DockPanel.Dock="Left" Height="0">
         </StackPanel>
         <StackPanel DockPanel.Dock="Right" Width="0">
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Height="0">
         </StackPanel>
-        <StackPanel x:Name="contextPanel">
-            <userControls:BookListControl Width="Auto" Height="Auto" />
-        </StackPanel>
-        
+        <Grid Name="contextPanel" >
+            
+        </Grid>
+
+
     </DockPanel>
 </Window>

@@ -54,11 +54,10 @@
       <DependentUpon>BookListControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EnumMainToolButton.cs" />
+    <Compile Include="MainToolBarClickArgs.cs" />
     <Compile Include="NavigateDir.xaml.cs">
       <DependentUpon>NavigateDir.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pager.xaml.cs">
-      <DependentUpon>Pager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -101,10 +100,6 @@
     <Page Include="NavigateDir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pager.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
