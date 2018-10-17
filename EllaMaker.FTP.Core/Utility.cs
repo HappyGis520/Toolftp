@@ -29,7 +29,9 @@ namespace EllaMaker.FTP.Core
     public static class Utility
     {
 
-        public static string URL = string.Empty;
+        public static string URL = "http://192.168.1.114:8111";
+
+       
 
         /// <summary>
         /// 枚举转字符

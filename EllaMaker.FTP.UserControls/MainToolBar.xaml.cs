@@ -11,12 +11,42 @@ namespace EllaMaker.FTP.UserControls
     /// </summary>
     public partial class MainToolBar : UserControl
     {
-        #region 路由事件
+        //#region 应用程序最小化事件
+
+        //public static readonly RoutedEvent AppWinMinEvent = EventManager.RegisterRoutedEvent("AppWinMin",
+        //    RoutingStrategy.Bubble, typeof( RoutedEventHandler),typeof(MainToolBar));
+        //public event RoutedEventHandler AppWinMin
+        //{
+        //    add { this.AddHandler(AppWinMinEvent, value);  }
+        //    remove { this.RemoveHandler(AppWinMinEvent, value);}
+        //}
+        //#endregion
+        //#region 窗体最大化事件
+
+        //public static readonly RoutedEvent AppWinMaxEvent = EventManager.RegisterRoutedEvent("AppWinMax",
+        //    RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MainToolBar));
+        //public event RoutedEventHandler AppWinMax
+        //{
+        //    add { this.AddHandler(AppWinMaxEvent, value); }
+        //    remove { this.RemoveHandler(AppWinMaxEvent, value); }
+        //}
+        //#endregion
+        //#region 关闭应用程序
+
+        //public static readonly RoutedEvent AppWinCloseEvent = EventManager.RegisterRoutedEvent("AppWinClose",
+        //    RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MainToolBar));
+        //public event RoutedEventHandler AppWinClose
+        //{
+        //    add { this.AddHandler(AppWinCloseEvent, value); }
+        //    remove { this.RemoveHandler(AppWinCloseEvent, value); }
+        //}
+        //#endregion
+        #region 主工具栏点击事件
         /// <summary>
         /// 主工具栏点击事件
         /// </summary>
         public static readonly RoutedEvent MailToolClickEvent =
-            EventManager.RegisterRoutedEvent("MailToolClickClick", RoutingStrategy.Direct, typeof(EventHandler<MainToolBarClickArgs>),
+            EventManager.RegisterRoutedEvent("MailToolClick", RoutingStrategy.Direct, typeof(EventHandler<MainToolBarClickArgs>),
                 typeof(MainToolBar));
         public event RoutedEventHandler MailToolClick
         {
@@ -32,45 +62,14 @@ namespace EllaMaker.FTP.UserControls
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             var _btn = sender as Button;
-            switch (_btn.Tag.ToString())
-            {
-                case "1":
-                    this.RaiseEvent(new MainToolBarClickArgs(MailToolClickEvent,this,EnumMainToolButton.LOADBOOK));
-                    break;
-                case "2":
-                    this.RaiseEvent(new MainToolBarClickArgs(MailToolClickEvent, this, EnumMainToolButton.LOADEBOOK));
-                    break;
-                case "3":
-                    break;
-                case "4":
-                    break;
-                case "5":
-                    break;
-                case "6":
-                    break;
-                case "7":
-                    break;
-                case "8":
-                    break;
-                case "9":
-                    break;
-                case "0":
-                    break;
-
-
-
-
-            }
-
+            var _Type = (EnumMainToolButton)Enum.Parse(typeof(EnumMainToolButton), _btn.Tag.ToString());
+            this.RaiseEvent(new MainToolBarClickArgs(MailToolClickEvent, this, _Type));
+           
         }
 
-        private void ExcutMainToolClick(object sender, ExecutedRoutedEventArgs e)
+        private void MainToolBar_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
-        }
-        private void CanExcutMainToolClick(object sender, CanExecuteRoutedEventArgs e)
-        {
-
+            this.RaiseEvent(new MainToolBarClickArgs(MailToolClickEvent, this, EnumMainToolButton.MAXWINDOW));
         }
     }
 }

@@ -58,16 +58,16 @@ namespace EllaMaker.FTP.UserControls
         /// 最小化窗口
         /// </summary>
         [Description("最小化窗口")]
-        MINWINDOW,
+        MINWINDOW =7,
         /// <summary>
         /// 最大化窗口
         /// </summary>
         [Description("最大化窗口")]
-        MAXWINDOW =7,
+        MAXWINDOW =8,
         /// <summary>
         /// 显示菜单
         /// </summary>
         [Description("显示菜单")]
-        SHOWMENU = 8
+        SHOWMENU = 9
     }
 }

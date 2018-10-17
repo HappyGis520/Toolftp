@@ -10,7 +10,9 @@ namespace EllaMaker.FTP.UserControls
 {
      public class MainToolBarClickArgs:RoutedEventArgs
      {
-         private EnumMainToolButton _ButtonType = EnumMainToolButton.SHOWMENU;
+
+
+        private EnumMainToolButton _ButtonType = EnumMainToolButton.SHOWMENU;
         public MainToolBarClickArgs(RoutedEvent routedEvent, Object source,EnumMainToolButton buttonType) : base(routedEvent, source)
         {
             _ButtonType = buttonType;

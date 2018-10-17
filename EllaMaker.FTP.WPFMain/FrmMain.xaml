@@ -12,20 +12,31 @@
                cmp:EllaPager.FirstPage = "FirstPageButton_Click"
                cmp:EllaPager.NextPage = "NextPageButton_Click"
                cmp:EllaPager.LastPage = "LastPageButton_Click"
-               cmp:EllaPager.PreviousPage = "PreviousPageButton_Click" >
+               cmp:EllaPager.PreviousPage = "PreviousPageButton_Click"  
+        MouseDown="Window_MouseDown">
     <DockPanel>
+        <userControls:LeftPanel BorderThickness="0" DockPanel.Dock="Left"></userControls:LeftPanel>
+
         <userControls:MainToolBar DockPanel.Dock="Top" MailToolClick="MainToolBar_OnMailToolClick" >
             
         </userControls:MainToolBar>
-        <StackPanel DockPanel.Dock="Left" Height="0">
-        </StackPanel>
+
         <StackPanel DockPanel.Dock="Right" Width="0">
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Height="0">
         </StackPanel>
-        <Grid Name="contextPanel" >
-            
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <userControls:ToolBar/>
+            <Grid Name="contextPanel" Grid.Row="1" >
+
+            </Grid>
+           
         </Grid>
+
 
 
     </DockPanel>

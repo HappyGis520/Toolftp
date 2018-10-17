@@ -95,9 +95,10 @@ namespace EllaMaker.FTP.UserControls
         #endregion
 
         #endregion
-        public void LoadData(List<BookListItem> items)
+        public void LoadData(BookListByPage Page)
         {
-            this.dgvList.ItemsSource = items;
+            this.dgvList.ItemsSource = Page.Items;
+            PageControl.CurrentPage = (Page.PageIndex +1).ToString();
         }
 
     }
