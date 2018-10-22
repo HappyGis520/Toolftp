@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EllaMaker.FTP.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Height="70">
     <Grid>
@@ -34,7 +33,7 @@
             <ColumnDefinition Width="*"/>
             
         </Grid.ColumnDefinitions>
-        <Image Grid.Row="1" Grid.Column="1" Source="pack://siteoforigin:,,,/Resources/goback.png"></Image>
+        <Image Grid.Row="1" Grid.Column="1" Stretch="Fill" Source="pack://siteoforigin:,,,/Resources/goback.png.png"  ></Image>
         <TextBlock Grid.Row="3" Grid.Column="1" FontSize="12" FontFamily="Microsoft YaHei">前进</TextBlock>
         <Image Grid.Row="1" Grid.Column="3" Source="pack://siteoforigin:,,,/Resources/gofront.png"></Image>
         <TextBlock Grid.Row="3" Grid.Column="3" FontSize="12" FontFamily="Microsoft YaHei">后退</TextBlock>
@@ -47,10 +46,10 @@
 
         <Image Grid.Row="1" Grid.Column="9" Source="pack://siteoforigin:,,,/Resources/newfolder.png"></Image>
         <TextBlock Grid.Row="3" Grid.Column="9" FontSize="12" FontFamily="Microsoft YaHei">新建文件夹</TextBlock>
-        
+
         <Image Grid.Row="1" Grid.Column="11" Source="pack://siteoforigin:,,,/Resources/delete.png"></Image>
         <TextBlock Grid.Row="3" Grid.Column="11" FontSize="12" FontFamily="Microsoft YaHei">删除</TextBlock>
-        
+
         <Image Grid.Row="1" Grid.Column="13" Source="pack://siteoforigin:,,,/Resources/moveto.png"></Image>
         <TextBlock Grid.Row="3" Grid.Column="13" FontSize="12" FontFamily="Microsoft YaHei">移动</TextBlock>
     </Grid>

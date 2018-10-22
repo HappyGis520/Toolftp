@@ -1,21 +1,28 @@
-﻿using EllaMaker.FTP.Model;
+﻿using System;
+using EllaMaker.FTP.Model;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using EllaMaker.FTP.Component;
 
 namespace EllaMaker.FTP.UserControls
 {
+
+
     /// <summary>
     /// BookListControl.xaml 的交互逻辑
     /// </summary>
     public partial class BookListControl : UserControl
     {
-        #region 定义翻页事件
-        //public static RoutedEvent FirstPageEvent;
-        //public static RoutedEvent PreviousPageEvent;
-        //public static RoutedEvent NextPageEvent;
-        //public static RoutedEvent LastPageEvent;
+        private BookListByPage _BindItems = null;
+        private double _RowHeight = 0;
+        #region 定义事件
+
+        public static readonly RoutedEvent LoadFTPRootEvent;
+
         #endregion
 
         public BookListControl()
@@ -24,82 +31,76 @@ namespace EllaMaker.FTP.UserControls
         }
 
         #region 事件注册及初始化
-        //static BookListControl()
-        //{
-        //    //FirstPageEvent = EventManager.RegisterRoutedEvent("FirstPage", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(BookListControl));
-        //    //PreviousPageEvent = EventManager.RegisterRoutedEvent("PreviousPage", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(BookListControl));
-        //    //NextPageEvent = EventManager.RegisterRoutedEvent("NextPage", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(BookListControl));
-        //    //LastPageEvent = EventManager.RegisterRoutedEvent("LastPage", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(BookListControl));
 
-        //    //CurrentPageProperty = DependencyProperty.Register("CurrentPage", typeof(string), typeof(EllaPager), new PropertyMetadata(string.Empty, new PropertyChangedCallback(OnCurrentPageChanged)));
-        //    //TotalPageProperty = DependencyProperty.Register("TotalPage", typeof(string), typeof(EllaPager), new PropertyMetadata(string.Empty, new PropertyChangedCallback(OnTotalPageChanged)));
-        //}
+        static BookListControl()
+        {
+            LoadFTPRootEvent =
+                EventManager.RegisterRoutedEvent("LoadFTPRoot",
+                    RoutingStrategy.Direct, typeof(RoutedEventHandler),
+                    typeof(BookListControl));
+        }
 
-        #region 翻页事件
-        ///// <summary>
-        ///// 第一页
-        ///// </summary>
-        //public event RoutedEventHandler FirstPage
-        //{
-        //    add { AddHandler(FirstPageEvent, value); }
-        //    remove { RemoveHandler(FirstPageEvent, value); }
-        //}
-        ///// <summary>
-        ///// 上一页
-        ///// </summary>
-        //public event RoutedEventHandler PreviousPage
-        //{
-        //    add { AddHandler(PreviousPageEvent, value); }
-        //    remove { RemoveHandler(PreviousPageEvent, value); }
-        //}
-        ///// <summary>
-        ///// 下一页
-        ///// </summary>
-        //public event RoutedEventHandler NextPage
-        //{
-        //    add { AddHandler(NextPageEvent, value); }
-        //    remove { RemoveHandler(NextPageEvent, value); }
-        //}
-        ///// <summary>
-        ///// 最后一页
-        ///// </summary>
-        //public event RoutedEventHandler LastPage
-        //{
-        //    add { AddHandler(LastPageEvent, value); }
-        //    remove { RemoveHandler(LastPageEvent, value); }
-        //}
-        #endregion
+        #region 事件封装
 
-        #region 翻页事件处理
-        //private void FirstPageButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //   this.RaiseEvent(new RoutedEventArgs(EllaPager.FirstPageEvent,this));
-        //}
-
-        //private void PreviousPageButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.RaiseEvent(new RoutedEventArgs(EllaPager.PreviousPageEvent, this));
-
-        //}
-
-        //private void NextPageButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //  RaiseEvent(new RoutedEventArgs(EllaPager.NextPageEvent,this));
-        //}
-
-        //private void LastPageButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    RaiseEvent(new RoutedEventArgs(EllaPager.LastPageEvent, this));
-        //}
+        /// <summary>
+        /// 加载FTP根目录事件
+        /// </summary>
+        public event RoutedEventHandler LoadFTPRoot
+        {
+            add { this.AddHandler(LoadFTPRootEvent, value); }
+            remove { this.RemoveHandler(LoadFTPRootEvent, value); }
+        }
 
         #endregion
 
         #endregion
+
+        /// <summary>
+        /// 加载图书列表
+        /// </summary>
+        /// <param name="Page"></param>
         public void LoadData(BookListByPage Page)
         {
             this.dgvList.ItemsSource = Page.Items;
-            PageControl.CurrentPage = (Page.PageIndex +1).ToString();
+            _BindItems = Page;
+            //_SelectRow = null;
         }
 
+        private void DgvList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var pos = e.GetPosition(dgvList);
+            var obj = dgvList.InputHitTest(pos);
+            var tagObj = obj as DependencyObject;
+            if (tagObj is DataGridRow)
+            {
+                var row = tagObj as DataGridRow;
+                this.RaiseEvent(new LoadFTPRootArgs(LoadFTPRootEvent,dgvList,_BindItems.Items[row.GetIndex()].id));
+            }
+
+        }
+
+        private void BookListControl_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var _columnHeardHeight = dgvList.ColumnHeaderHeight;
+            var _ViewHeight = _GridHeight - _columnHeardHeight;
+            var _Rows = _ViewHeight % _RowHeight > 0 ? _ViewHeight / _RowHeight + 1:
+             _ViewHeight / _RowHeight ;
+            Debug.Print($"Grid控件高度{_GridHeight}，列头调度{_columnHeardHeight}，行高度{_RowHeight}，行数{_Rows},  {   dgvList.Items.Count}");
+        }
+
+        private void DgvList_OnLoadingRow(object sender, DataGridRowEventArgs e)
+        {
+                
+                //_RowHeight = e.Row.Height;
+            
+           
+            
+
+        }
+
+        private void DgvList_OnLayoutUpdated(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

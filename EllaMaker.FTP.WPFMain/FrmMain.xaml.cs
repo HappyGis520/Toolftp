@@ -68,6 +68,7 @@ namespace EllaMaker.FTP.View
             if (_BookListView == null)
             {
                 _BookListView = new BookListControl();
+                _BookListView.Name = "BookListVIew";
                 _BLLBook = new BLLBook();
             }
             this.contextPanel.Children.Clear();
@@ -105,37 +106,7 @@ namespace EllaMaker.FTP.View
             }
         }
 
-        #region 翻页事件处理
-        private void FirstPageButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_CurFormType == EnumMainToolButton.LOADBOOK)
-            {
-              //var _item = _BLLBook.LoadBookList(0,_BookListView)
-                
-            }
-            else
-            {
-                
-            }
 
-        }
-
-        private void PreviousPageButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void NextPageButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void LastPageButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
         /// <summary>
         /// 工具栏事件
         /// </summary>
@@ -223,14 +194,47 @@ namespace EllaMaker.FTP.View
             //窗体状态改变时候触发
             //this.StateChanged += new EventHandler(SysTray_StateChanged);
         }
-
-        private void NotifyIcon_Click(object sender,System.Windows.Forms.MouseEventArgs e)
+        #region  事件处理
+        private void NotifyIcon_Click(object sender, System.Windows.Forms.MouseEventArgs e)
         {
 
-                WindowState = WindowState.Maximized;
+            WindowState = WindowState.Maximized;
             this.ShowIconInTaskBar = true;
 
 
         }
+        #region  分页事件处理
+
+        private void FrmMain_OnFirstPage(object sender, RoutedEventArgs e)
+        {
+            var _param = e as PageIndexChangedArgs;
+            if (_CurFormType == EnumMainToolButton.LOADBOOK)
+            {
+                var item = _BLLBook.LoadBookList(_param.NewPageIndex, _param.PageSize);
+                _BookListView.LoadData(item);
+            }
+            else
+            {
+
+            }
+
+        }
+
+        private void FrmMain_OnPreviousPage(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FrmMain_OnNextPage(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FrmMain_OnLastPage(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+        #endregion
     }
 }

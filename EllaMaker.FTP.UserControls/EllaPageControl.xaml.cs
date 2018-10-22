@@ -3,19 +3,18 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System;
 
-namespace EllaMaker.FTP.Component
+namespace EllaMaker.FTP.UserControls
 {
     /// <summary>
     /// Interaction logic for Pager.xaml
     /// </summary>
-    public partial class EllaPager : UserControl
+    public partial class EllaPageControl : UserControl
     {
         public static RoutedEvent FirstPageEvent;
         public static RoutedEvent PreviousPageEvent;
         public static RoutedEvent NextPageEvent;
         public static RoutedEvent LastPageEvent;
         public static readonly DependencyProperty PageSizeProperty;
-
         /// <summary>
         /// 当前页
         /// </summary>
@@ -35,32 +34,32 @@ namespace EllaMaker.FTP.Component
         /// <summary>
         /// 当前页码
         /// </summary>
-        public string CurrentPage
+        public int CurrentPage
         {
-            get { return (string)GetValue(CurrentPageProperty); }
+            get { return (int)GetValue(CurrentPageProperty); }
             set { SetValue(CurrentPageProperty, value); }
-        }
+        } 
         /// <summary>
         /// 总页数
         /// </summary>
-        public string TotalPage
+        public int TotalPage
         {
-            get { return (string)GetValue(TotalPageProperty); }
+            get { return (int)GetValue(TotalPageProperty); }
             set { SetValue(TotalPageProperty, value); }
         }
-        public EllaPager()
+        public EllaPageControl()
         {
             InitializeComponent();
         }
-        static EllaPager()
+        static EllaPageControl()
         {
-            FirstPageEvent = EventManager.RegisterRoutedEvent("FirstPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPager));
-            PreviousPageEvent = EventManager.RegisterRoutedEvent("PreviousPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPager));
-            NextPageEvent = EventManager.RegisterRoutedEvent("NextPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPager));
-            LastPageEvent = EventManager.RegisterRoutedEvent("LastPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPager));
-
-            CurrentPageProperty = DependencyProperty.Register("CurrentPage", typeof(string), typeof(EllaPager), new PropertyMetadata(string.Empty,new PropertyChangedCallback(OnCurrentPageChanged)));
-            TotalPageProperty = DependencyProperty.Register("TotalPage", typeof(string), typeof(EllaPager), new PropertyMetadata(string.Empty,new PropertyChangedCallback(OnTotalPageChanged)));
+            FirstPageEvent = EventManager.RegisterRoutedEvent("FirstPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPageControl));
+            PreviousPageEvent = EventManager.RegisterRoutedEvent("PreviousPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPageControl));
+            NextPageEvent = EventManager.RegisterRoutedEvent("NextPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPageControl));
+            LastPageEvent = EventManager.RegisterRoutedEvent("LastPage", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EllaPageControl));
+            CurrentPageProperty = DependencyProperty.Register("CurrentPage", typeof(int), typeof(EllaPageControl), new PropertyMetadata(0,new PropertyChangedCallback(OnCurrentPageChanged)));
+            TotalPageProperty = DependencyProperty.Register("TotalPage", typeof(int), typeof(EllaPageControl), new PropertyMetadata(1,new PropertyChangedCallback(OnTotalPageChanged)));
+            PageSizeProperty = DependencyProperty.Register("PageSize", typeof(int), typeof(EllaPageControl), new PropertyMetadata(10,new PropertyChangedCallback(OnTotalPageChanged)));
         }
         /// <summary>
         /// 第一页
@@ -101,7 +100,7 @@ namespace EllaMaker.FTP.Component
         /// <param name="e"></param>
         public static void OnTotalPageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            EllaPager p = d as EllaPager;
+            EllaPageControl p = d as EllaPageControl;
 
             if(p != null)
             {
@@ -117,7 +116,7 @@ namespace EllaMaker.FTP.Component
         /// <param name="e"></param>
         private static void OnCurrentPageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            EllaPager p = d as EllaPager;
+            EllaPageControl p = d as EllaPageControl;
 
             if(p != null)
             {
@@ -129,23 +128,34 @@ namespace EllaMaker.FTP.Component
 
         private void FirstPageButton_Click(object sender, RoutedEventArgs e)
         {
+            //if (curpage != 0)
+            //{
 
-            RaiseEvent(new RoutedEventArgs(FirstPageEvent, this));
+                RaiseEvent(new PageIndexChangedArgs(FirstPageEvent, this, CurrentPage, 0,
+                PageSize));
+            //}
         }
 
         private void PreviousPageButton_Click(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new RoutedEventArgs(PreviousPageEvent, this));
+            var newPage = Convert.ToInt16(CurrentPage) - 1 >= 0 ? Convert.ToInt16(CurrentPage) - 1 : 0;
+            RaiseEvent(new PageIndexChangedArgs(PreviousPageEvent, this, Convert.ToInt16(CurrentPage), newPage, PageSize));
         }
 
         private void NextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new RoutedEventArgs(NextPageEvent, this));
+            var newPage = Convert.ToInt16(CurrentPage) + 1 <= Convert.ToInt16(TotalPage) ? Convert.ToInt16(CurrentPage) + 1 : Convert.ToInt16(TotalPage);
+            RaiseEvent(new PageIndexChangedArgs(NextPageEvent, this, Convert.ToInt16(CurrentPage), newPage, PageSize));
         }
 
         private void LastPageButton_Click(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new RoutedEventArgs(LastPageEvent, this));
+            if ((int)Convert.ToInt16(CurrentPage) != Convert.ToInt16(TotalPage) - 1)
+            {
+                var newPage = Convert.ToInt16(TotalPage) - 1;
+                RaiseEvent(new PageIndexChangedArgs(LastPageEvent, this, Convert.ToInt16(CurrentPage), newPage,
+                    PageSize));
+            }
         }
     }
 }

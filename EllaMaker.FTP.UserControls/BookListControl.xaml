@@ -2,14 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:Comp="clr-namespace:EllaMaker.FTP.Component;assembly=EllaMaker.FTP.Component"
-             mc:Ignorable="d" d:DesignHeight="200" d:DesignWidth="500" BorderThickness="1" BorderBrush="#dedede">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EllaMaker.FTP.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" 
+             d:DesignWidth="500" 
+             BorderThickness="1" 
+             BorderBrush="#dedede"
+             SizeChanged="BookListControl_OnSizeChanged"
+             >
     <UserControl.Resources>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Width" Value="22"/>
-            <Setter Property="Height" Value="22"/>
-        </Style>
         <Style TargetType="DataGridCell">
             <Setter Property="Template">
                 <Setter.Value>
@@ -32,13 +34,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="22"/>
         </Grid.RowDefinitions>
-        <DataGrid  RowHeaderWidth="0"  x:Name="dgvList" AlternationCount="1"   
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid   Grid.ColumnSpan="2"  RowHeaderWidth="0"  x:Name="dgvList" AlternationCount="1"   
                AutoGenerateColumns="False" FontSize="12" CanUserAddRows="False" 
                CanUserDeleteRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto"
                EnableRowVirtualization="True" IsEnabled="True" EnableColumnVirtualization="True" 
-               VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="#FFBCC1BC" BorderThickness="1"  BorderBrush="#dedede" Background="White">
+               VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="#FFBCC1BC" BorderThickness="1"  
+               BorderBrush="#dedede" Background="White"  
+               MouseDoubleClick="DgvList_OnMouseDoubleClick" 
+               LoadingRow="DgvList_OnLoadingRow">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="FontFamily" Value="MicrosoftYaHei"/>
@@ -50,13 +59,12 @@
                     <Setter Property="HorizontalContentAlignment" Value="Left"/>
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
-
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <Setter Property="Foreground" Value="#44474a"/>
                     <Setter Property="FontFamily" Value="MicrosoftYaHei"/>
-                    <Setter Property="Height" Value="44"/>
+                    <Setter Property="Height" Value="40"/>
                     <Setter Property="BorderThickness" Value="0"/>
                     <Setter Property="BorderBrush" Value="#f0f0f0"></Setter>
                     <Setter Property="Background" Value="#fcfcfc"></Setter>
@@ -73,19 +81,6 @@
                     </Style.Triggers>
                 </Style>
             </DataGrid.RowStyle>
-            <!--<DataGrid.CellStyle>
-                <Style TargetType="DataGridCell" >
-                    --><!--<Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="HorizontalAlignment" Value="Left"/>--><!--
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="LightBlue"/>
-                            <Setter Property="Foreground" Value="White"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.CellStyle>-->
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ISBN"   Binding="{Binding Isbn, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
                 <DataGridTextColumn Header="名称"  Binding="{Binding Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
@@ -96,7 +91,6 @@
                 <DataGridTextColumn Header="操作 " Binding="{Binding NAME2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Comp:EllaPager x:Name="PageControl" Grid.Row="1" HorizontalContentAlignment="Right" BorderThickness="1"></Comp:EllaPager>
-
+        <local:EllaPageControl Grid.Row="1" HorizontalAlignment="Right"></local:EllaPageControl>
     </Grid>
 </UserControl>

@@ -91,9 +91,57 @@
         </Style>
         <Style TargetType="{x:Type Button}">
             <Setter Property="BorderThickness" Value="1"></Setter>
-            <Setter Property="Background" Value="LightGoldenrodYellow"></Setter>
+            <Setter Property="Background" Value="White"></Setter>
             <Setter Property="AllowDrop" Value="True"></Setter>
+            <Setter Property="FontFamily" Value="Microsoftyahei"/>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
         </Style>
+        <ControlTemplate x:Key="TopButtonTemp" TargetType="{x:Type ButtonBase}" >
+            <Border x:Name="border"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="24" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border  x:Name="border_Left" Background="Transparent">
+                        
+                    </Border>
+                    <ContentPresenter Grid.Column="4" 
+                                      x:Name="contentPresenter" 
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
+                                      ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border"   Value="#d2e2ff"/>
+                    <!--<Setter Property="BorderBrush" TargetName="border" Value="Red"/>-->
+                </Trigger>
+                <!--<Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border_Left" Value="#445e97"/>
+                    --><!--<Setter Property="Background" TargetName="border" Value="Red"/>-->
+                    <!--<Setter Property="BorderBrush" TargetName="border_Left" Value="#FF2C628B"/>--><!--
+                </Trigger>-->
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border_Left" Value="#445e97"/>
+                    <!--<Setter Property="Background" TargetName="border" Value="Blue"/>-->
+                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>-->
+                </Trigger>
+                <!--<Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>-->
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -102,7 +150,7 @@
             <RowDefinition Height="6"/>
             <RowDefinition Height="18"/>
             <RowDefinition Height="12"/>
-            <RowDefinition Height="14"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -118,16 +166,16 @@
             <Run x:Name="txtUserName" Text="wangjjfssdfsdaf" Background="White"/>
         </TextBlock>
         <ProgressBar x:Name="DiskSize"  Value="50" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"  ForceCursor="True" BorderBrush="{x:Null}"  BorderThickness="0" UseLayoutRounding="False"  Background="#FF445E97"/>
+        <Border Grid.Row="6" Grid.ColumnSpan="5" BorderBrush="#FFACA6A6" BorderThickness="0,0,0,1"></Border>
         <StackPanel x:Name="LeftListControl" Grid.Row="7" Grid.ColumnSpan="5" >
-            <Button Content="动画书"/>
-            <Button Content="图   书"/>
-            <Button Content="共享资源"/>
-            <Button Content="个人资源"/>
-            <Button Content="个人资源"/>
-            <Button Content="部门资源"/>
-            
+            <Button Content="动画书"  BorderThickness="0" Template="{DynamicResource TopButtonTemp}" d:IsLocked="True"/>
+            <Button Content="图   书"  BorderThickness="0" Template="{DynamicResource TopButtonTemp}" d:IsLocked="True"/>
+            <Button Content="共享资源"  BorderThickness="0" Template="{DynamicResource TopButtonTemp}" d:IsHidden="True" d:IsLocked="True"/>
+            <Button Content="个人资源"  BorderThickness="0" Template="{DynamicResource TopButtonTemp}" d:IsLocked="True"/>
+            <Button Content="个人资源"  BorderThickness="0" Template="{DynamicResource TopButtonTemp}" d:IsLocked="True"/>
+            <Button Content="部门资源"  BorderThickness="0" Template="{DynamicResource TopButtonTemp}" d:IsLocked="True"/>
         </StackPanel>
-        
-            
+
+
     </Grid>
 </UserControl>

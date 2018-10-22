@@ -8,11 +8,12 @@
         xmlns:userControls="clr-namespace:EllaMaker.FTP.UserControls;assembly=EllaMaker.FTP.UserControls"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="332.833" Width="953.433" WindowStyle="None" 
-               cmp:EllaPager.FirstPage = "FirstPageButton_Click"
-               cmp:EllaPager.NextPage = "NextPageButton_Click"
-               cmp:EllaPager.LastPage = "LastPageButton_Click"
-               cmp:EllaPager.PreviousPage = "PreviousPageButton_Click"  
+        Title="MainWindow" Height="332.833" Width="953.433" WindowStyle="None"  
+        userControls:EllaPageControl.FirstPage="FrmMain_OnFirstPage"
+        userControls:EllaPageControl.PreviousPage="FrmMain_OnPreviousPage"
+       userControls:EllaPageControl.NextPage="FrmMain_OnNextPage"
+        userControls:EllaPageControl.LastPage="FrmMain_OnLastPage"
+        
         MouseDown="Window_MouseDown">
     <DockPanel>
         <userControls:LeftPanel BorderThickness="0" DockPanel.Dock="Left"></userControls:LeftPanel>

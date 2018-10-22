@@ -7,8 +7,9 @@
              d:DesignHeight="20" d:DesignWidth="300">
             <StackPanel Orientation="Horizontal">
                 <Button Content="西游记->" Background="Transparent" BorderThickness="0" FontFamily="Microsoft YaHei"/>
-                <Button Content="高清资源->" Background="Transparent" BorderThickness="0"/>
-                <Button Content="页1->" Background="Transparent" BorderThickness="0"/>
+        <Button Content="高清资源->" Background="Transparent" BorderThickness="0">
+        </Button>
+        <Button Content="页1->" Background="Transparent" BorderThickness="0"/>
                 <Button Content="...->" Background="Transparent" BorderThickness="0"/>
                 <Button Content="悟空资源->" Background="Transparent" BorderThickness="0" />
              </StackPanel>
