@@ -13,7 +13,7 @@ namespace EllaMaker.FTP.BLL
         /// </summary>
         protected string    ServicHostIP
         {
-            get { return "192.168.1.114"; }
+            get { return "http://192.168.1.114"; }
         }
         /// <summary>
         /// 服务端端口

@@ -11,9 +11,8 @@
         Title="MainWindow" Height="332.833" Width="953.433" WindowStyle="None"  
         userControls:EllaPageControl.FirstPage="FrmMain_OnFirstPage"
         userControls:EllaPageControl.PreviousPage="FrmMain_OnPreviousPage"
-       userControls:EllaPageControl.NextPage="FrmMain_OnNextPage"
+        userControls:EllaPageControl.NextPage="FrmMain_OnNextPage"
         userControls:EllaPageControl.LastPage="FrmMain_OnLastPage"
-        
         MouseDown="Window_MouseDown">
     <DockPanel>
         <userControls:LeftPanel BorderThickness="0" DockPanel.Dock="Left"></userControls:LeftPanel>

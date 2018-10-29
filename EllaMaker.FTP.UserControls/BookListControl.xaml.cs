@@ -69,15 +69,11 @@ namespace EllaMaker.FTP.UserControls
 
         private void DgvList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var pos = e.GetPosition(dgvList);
-            var obj = dgvList.InputHitTest(pos);
-            var tagObj = obj as DependencyObject;
-            if (tagObj is DataGridRow)
+            if (dgvList.CurrentItem != null)
             {
-                var row = tagObj as DataGridRow;
-                this.RaiseEvent(new LoadFTPRootArgs(LoadFTPRootEvent,dgvList,_BindItems.Items[row.GetIndex()].id));
+                var item = dgvList.CurrentItem as BookItem;
+                this.RaiseEvent(new LoadFTPRootArgs(LoadFTPRootEvent, dgvList, item.id));
             }
-
         }
 
         private void BookListControl_OnSizeChanged(object sender, SizeChangedEventArgs e)

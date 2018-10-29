@@ -69,6 +69,7 @@ namespace EllaMaker.FTP.View
             {
                 _BookListView = new BookListControl();
                 _BookListView.Name = "BookListVIew";
+                _BookListView.LoadFTPRoot += LoadBookFTPRoot;
                 _BLLBook = new BLLBook();
             }
             this.contextPanel.Children.Clear();
@@ -235,6 +236,15 @@ namespace EllaMaker.FTP.View
             throw new NotImplementedException();
         }
         #endregion
+
         #endregion
+
+        private void LoadBookFTPRoot(object sender, RoutedEventArgs e)
+        {
+            var _param = e as LoadFTPRootArgs;
+            var _bookID = _param.BookID;
+           
+
+        }
     }
 }
