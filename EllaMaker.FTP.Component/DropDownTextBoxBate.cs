@@ -94,7 +94,7 @@ namespace EllaMaker.FTP.Component
             set => selectedIndex = value;
         }
 
-
+ 
         private int insetIndex = 0;
         public int InsetIndex { get => insetIndex; set => insetIndex = value; }
 

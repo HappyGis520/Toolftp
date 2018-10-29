@@ -56,7 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Message\ControllerNames.cs" />
     <Compile Include="Message\Enum\EnumFileResourceType.cs" />
     <Compile Include="Message\Enum\EnumFTPFileInfoType.cs" />
     <Compile Include="Message\Model\Book.cs" />
@@ -67,12 +66,12 @@
     <Compile Include="Message\Model\ftpsite.cs" />
     <Compile Include="Message\Model\ftpuser.cs" />
     <Compile Include="Message\Model\Permission.cs" />
+    <Compile Include="Message\Request\Used\FTPFileInfoListParam.cs" />
     <Compile Include="MResourceItem.cs" />
     <Compile Include="MUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Message\Model\Publisher.cs" />
     <Compile Include="Message\RequestModelBase.cs" />
-    <Compile Include="Message\Request\AddEbookParam.cs" />
     <Compile Include="Message\Request\AddUserParam.cs" />
     <Compile Include="Message\Request\AppendBookParam.cs" />
     <Compile Include="Message\Request\AppendFolderParam.cs" />

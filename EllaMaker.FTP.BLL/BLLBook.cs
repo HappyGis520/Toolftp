@@ -9,8 +9,16 @@ using EllaMaker.FTP.Services;
 
 namespace EllaMaker.FTP.BLL
 {
-    internal class BLLBook
+    internal class BLLBook:BLLBase
     {
+        BookAPIs _Api = null;
+        
+        public BLLBook()
+        {
+            _Api = new BookAPIs(this.ServicHostIP, ServicePort);
+
+
+        }
         
         /// <summary>
         /// 加载图书列表
@@ -23,7 +31,7 @@ namespace EllaMaker.FTP.BLL
             BookListByPageParam param = new BookListByPageParam();
             param.PageSize = pageSize;
             param.PageIndex = pageIndex;
-            var obj = BookAPIs.Instance.AllBookListByPage(param);
+            var obj = _Api.AllBookListByPage(param);
             if (obj.Successful)
                 return obj.Data;
             return null;
