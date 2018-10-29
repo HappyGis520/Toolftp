@@ -1,0 +1,101 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctl="clr-namespace:EllaMaker.FTP.Component"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:beh="clr-namespace:EllaMaker.FTP.Component.Command"
+    xmlns:cvt="clr-namespace:EllaMaker.FTP.Component.Converter"
+    >
+    
+    <Style TargetType="{x:Type ctl:SingleDropDownTextBoxBate}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate >
+                    <ControlTemplate.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctl:SingleDropDownTextBoxBate}}}"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsFocused" Value="true">
+                                    <Setter Property="Text" Value=""/>
+                                </Trigger>
+
+                            </Style.Triggers>
+                        </Style>
+                        <cvt:ContainsVisiableConverter x:Key="containsVisiableConverter"/>
+                    </ControlTemplate.Resources>
+                    <Border Background="{TemplateBinding Background}"
+                   
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Name="root" Background="{TemplateBinding Background}">
+                            <TextBox HorizontalAlignment="Stretch" 
+                                     Text="{Binding Text,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctl:SingleDropDownTextBoxBate}},UpdateSourceTrigger=PropertyChanged}" 
+                                     VerticalAlignment="Stretch" Background="Transparent">
+                                <i:Interaction.Behaviors>
+                                    <beh:EventToCommandBehavior Event="TextChanged" Command="{Binding  Path=TextBox_TextChangedCmd,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ctl:SingleDropDownTextBoxBate}}}"  PassArguments="True"  />
+                                    <beh:EventToCommandBehavior Event="PreviewMouseLeftButtonDown" Command="{Binding  Path=TextBox_PreviewMouseLeftButtonDownCmd,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ctl:SingleDropDownTextBoxBate}}}"  PassArguments="True"  />
+                                    <beh:EventToCommandBehavior Event="PreviewKeyDown" Command="{Binding  Path=TextBox_KeyDownCmd,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ctl:SingleDropDownTextBoxBate}}}"  PassArguments="True"  />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Popup 
+                        IsOpen="{Binding IsDropdownOpened,Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent},UpdateSourceTrigger=PropertyChanged}"
+                        AllowsTransparency="True"
+                        MaxHeight="200" 
+                        MinWidth="70"
+                        Width="{TemplateBinding ActualWidth}"
+                        PlacementTarget="{Binding ElementName=panel}"
+                        StaysOpen="False" 
+                        PopupAnimation="Fade"
+                        MinHeight="20" >
+                                <Border Background="White" Margin="3">
+                                    <ListBox Name="dropListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DropItems,RelativeSource={RelativeSource Mode=TemplatedParent}}" >
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Name="itemsPanel" HorizontalAlignment="Stretch"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem">
+                                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListBoxItem">
+                                                            <Border Background="{TemplateBinding Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                                <ContentPresenter/>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="true">
+                                                        <Setter Property="Background" Value="Aqua"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" Foreground="Black"  >
+                                                    <i:Interaction.Behaviors>
+                                                          <beh:EventToCommandBehavior Event="PreviewMouseLeftButtonDown" Command="{Binding  Path=TextBlock_MouseLeftButtonDownCmd,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ctl:SingleDropDownTextBoxBate}}}"  PassArguments="True"  />
+                                                        </i:Interaction.Behaviors>
+                                                    <TextBlock.Visibility>
+                                                        <MultiBinding Converter="{StaticResource containsVisiableConverter}">
+                                                            <Binding Path="."/>
+                                                            <Binding Path="Text" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ctl:SingleDropDownTextBoxBate}}"/>
+                                                        </MultiBinding>
+                                                    </TextBlock.Visibility>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

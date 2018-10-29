@@ -33,6 +33,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -47,20 +51,79 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Rule.cs" />
+    <Compile Include="SearchTextBox.cs" />
+    <Compile Include="SingleDropDownTextBoxBate.cs" />
+    <Compile Include="WatermarkTextBox.cs" />
+    <Page Include="Themes\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DropDownTextBoxBate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="EllaButton.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Themes\Theme.xaml">
-      <SubType>Designer</SubType>
+    <Compile Include="ColorPicker.cs" />
+    <Compile Include="ColorPicker\BindOnEnterTextBox.cs" />
+    <Compile Include="ColorPicker\ColorComboBox.cs" />
+    <Compile Include="ColorPicker\ColorSlider.cs" />
+    <Compile Include="ColorPicker\ColorUtils.cs" />
+    <Compile Include="ColorPicker\HsvControl.cs" />
+    <Compile Include="ColorPicker\SpectrumSlider.cs" />
+    <Compile Include="Command\ActionCommand.cs" />
+    <Compile Include="Command\EventToCommandBehavior.cs" />
+    <Compile Include="Converter\BoolToVisibilityReverseConverter.cs" />
+    <Compile Include="Converter\ContainsVisiableConverter.cs" />
+    <Compile Include="Converter\EnumToVisiableConverter.cs" />
+    <Compile Include="Converter\ListEmptyConverter.cs" />
+    <Compile Include="Converter\NullImageConverter.cs" />
+    <Page Include="Themes\IconButton.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\IconCheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\IconRadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\PathColorCheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\PathColorRadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\SearchTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\SingleDropDownTextBoxBate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WatermarkTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DropDownTextBoxBate.cs" />
     <Compile Include="EllaView.cs" />
+    <Compile Include="Enum\ChangeColorType.cs" />
+    <Compile Include="Enum\ImageSourceType.cs" />
+    <Compile Include="IconButton.cs" />
+    <Compile Include="IconCheckBox.cs" />
+    <Compile Include="IconRadioButton.cs" />
+    <Compile Include="PathColorCheckBox.cs" />
+    <Compile Include="PathColorRadioButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,5 +146,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

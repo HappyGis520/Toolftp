@@ -17,8 +17,10 @@ namespace EllaMaker.FTP.UserControls
     /// </summary>
     public partial class BookListControl : UserControl
     {
+        private int _ColumnHeardHeight = 44;
         private BookListByPage _BindItems = null;
-        private double _RowHeight = 0;
+        private double _RowHeight = 20;
+        private double _MaxRows = 0;
         #region 定义事件
 
         public static readonly RoutedEvent LoadFTPRootEvent;
@@ -63,7 +65,6 @@ namespace EllaMaker.FTP.UserControls
         {
             this.dgvList.ItemsSource = Page.Items;
             _BindItems = Page;
-            //_SelectRow = null;
         }
 
         private void DgvList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -81,26 +82,16 @@ namespace EllaMaker.FTP.UserControls
 
         private void BookListControl_OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var _columnHeardHeight = dgvList.ColumnHeaderHeight;
-            var _ViewHeight = _GridHeight - _columnHeardHeight;
-            var _Rows = _ViewHeight % _RowHeight > 0 ? _ViewHeight / _RowHeight + 1:
-             _ViewHeight / _RowHeight ;
-            Debug.Print($"Grid控件高度{_GridHeight}，列头调度{_columnHeardHeight}，行高度{_RowHeight}，行数{_Rows},  {   dgvList.Items.Count}");
+            var _OriginalObj = e.Source as FrameworkElement;
+            
+            var _TotalRowHeight = _OriginalObj.ActualHeight - _ColumnHeardHeight;
+             _MaxRows = _TotalRowHeight%_RowHeight > 0 ? (_TotalRowHeight/ _RowHeight) + 1 : (_TotalRowHeight/ _RowHeight);
+            
+            if (_OriginalObj is DataGrid)
+            {
+                Debug.Print($"Grid控件原高度{e.PreviousSize.Height}，现高度{e.NewSize.Height},行数{_MaxRows}");
+            }
         }
 
-        private void DgvList_OnLoadingRow(object sender, DataGridRowEventArgs e)
-        {
-                
-                //_RowHeight = e.Row.Height;
-            
-           
-            
-
-        }
-
-        private void DgvList_OnLayoutUpdated(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

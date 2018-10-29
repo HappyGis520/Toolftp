@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EllaMaker.FTP.View"
+             xmlns:comp="clr-namespace:EllaMaker.FTP.Component;assembly=EllaMaker.FTP.Component"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="LayoutRoot">
@@ -13,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Path Grid.Row ="0"  x:Name="矩形" Data="F1M43,2C43,2 159,2 159,2 182.196,2 201,20.804 201,44 201,67.196 182.196,86 159,86 159,86 43,86 43,86 19.804,86 1,67.196 1,44 1,20.804 19.804,2 43,2z" Fill="#FFFFC259" Height="87" Canvas.Left="300" Canvas.Top="103" Width="202"/>
-        <Path Grid.Row="1" x:Name="矩形_5_拷贝_5" Data="F1M43,2C43,2 459,2 459,2 482.196,2 501,20.804 501,44 501,67.196 482.196,86 459,86 459,86 43,86 43,86 19.804,86 1,67.196 1,44 1,20.804 19.804,2 43,2z" Fill="#FF2B83C5" Height="87" Canvas.Left="0" Canvas.Top="257" Width="502"/>
+        <comp:EllaButton CornerRadius="50" Background="Red" />
     </Grid>
 </UserControl>
  

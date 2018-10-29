@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.UserControls"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllaMaker.FTP.Component", "EllaMaker.FTP.Component\EllaMaker.FTP.Component.csproj", "{9934FF7C-5596-4C18-B9F9-68C21A0F7911}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EllaMaker.FTP.API", "EllaMaker.FTP.API", "{186E803D-A073-4804-B1F1-4A73BD5F6374}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,8 +63,12 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14B75D26-49DF-47FA-A4C6-17456987D604} = {186E803D-A073-4804-B1F1-4A73BD5F6374}
+		{CB419ECE-5867-421F-BCC3-C07BB1959285} = {186E803D-A073-4804-B1F1-4A73BD5F6374}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {04CB2928-8DA3-4819-AEC3-9C1792BD8CAB}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+		SolutionGuid = {04CB2928-8DA3-4819-AEC3-9C1792BD8CAB}
 	EndGlobalSection
 EndGlobal

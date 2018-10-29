@@ -83,6 +83,9 @@
     <Compile Include="MainToolBar.xaml.cs">
       <DependentUpon>MainToolBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ResourceList.xaml.cs">
+      <DependentUpon>ResourceList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResourceListControlxaml.xaml.cs">
       <DependentUpon>ResourceListControlxaml.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NavigateDir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

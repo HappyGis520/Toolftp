@@ -9,7 +9,6 @@
              d:DesignWidth="500" 
              BorderThickness="1" 
              BorderBrush="#dedede"
-             SizeChanged="BookListControl_OnSizeChanged"
              >
     <UserControl.Resources>
         <Style TargetType="DataGridCell">
@@ -34,7 +33,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="22"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -46,8 +45,8 @@
                EnableRowVirtualization="True" IsEnabled="True" EnableColumnVirtualization="True" 
                VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="#FFBCC1BC" BorderThickness="1"  
                BorderBrush="#dedede" Background="White"  
-               MouseDoubleClick="DgvList_OnMouseDoubleClick" 
-               LoadingRow="DgvList_OnLoadingRow">
+                    MouseDoubleClick="DgvList_OnMouseDoubleClick" 
+                    SizeChanged="BookListControl_OnSizeChanged" >
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="FontFamily" Value="MicrosoftYaHei"/>
@@ -91,6 +90,6 @@
                 <DataGridTextColumn Header="操作 " Binding="{Binding NAME2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <local:EllaPageControl Grid.Row="1" HorizontalAlignment="Right"></local:EllaPageControl>
+        <TextBlock Grid.Row="1" Text="{Binding ElementName=dgvList, Path=ColumnHeaderHeight}"></TextBlock>
     </Grid>
 </UserControl>

@@ -35,7 +35,8 @@
             <TextBox x:Name="txtUserName" FontSize="15"  VerticalAlignment="Center"  HorizontalAlignment="Left"  Grid.Row="0" Grid.Column="1">wangjain</TextBox>
             <TextBox x:Name="txtPassword" FontSize="15"   VerticalAlignment="Center"  HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="1" >fdsafas</TextBox>
         </Grid>
-        <Button x:Name="btnOk" Content="登录" Grid.Row="2" Grid.Column="1" Width="120" Height="40" Click="BtnOk_OnClick"></Button>
+        <companent:EllaButton x:Name="btnOk"  Grid.Row="2" Grid.Column="1" Width="120" Height="40" Click="BtnOk_OnClick" Background="Blue">
+        </companent:EllaButton>
         <Button x:Name="btnCancel" Content="取消" Grid.Row="2" Grid.Column="2" Width="120" Height="40" Click="BtnCancel_OnClick"></Button>
     </Grid>
 </Window>

@@ -1,0 +1,147 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctl="clr-namespace:EllaMaker.FTP.Component"
+    xmlns:em="clr-namespace:EllaMaker.FTP.Component.Enum" >
+    <Style TargetType="ctl:PathColorRadioButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Width" Value="24"/>
+        <Setter Property="Height" Value="24"/>
+        <Setter Property="Template"  >
+            <Setter.Value>
+                <ControlTemplate  TargetType="ctl:PathColorRadioButton">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="leaveAnim">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2"
+                                                      Value="1" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2"
+                                                      Value="1" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2"
+                                                      Value="1" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="enterAnim">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                                      Value="1" />
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2"
+                                                      Value="1.3" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                                      Value="1" />
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2"
+                                                      Value="1.3" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2"
+                                                      Value="0.4" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid Background="{TemplateBinding Background}">
+                        <Border RenderTransformOrigin="0.5,0.5"
+                                Name="root"
+                                IsEnabled="{TemplateBinding IsEnabled}"
+                                Margin="{TemplateBinding Padding}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1"  ScaleY="1" />
+                            </Border.RenderTransform>
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                    <BeginStoryboard  Storyboard="{StaticResource enterAnim}"/>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                    <BeginStoryboard Storyboard="{StaticResource leaveAnim}" />
+                                </EventTrigger>
+                            </Border.Triggers>
+                            <Grid SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                
+                                   RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <RotateTransform Angle="{Binding Angle}" />
+                                </Grid.RenderTransform>
+                                <Path  Name="path"  
+                               Fill="{Binding Foreground}"
+                               Data="{Binding Source}" 
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Stretch="Fill" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="true" />
+                                <Condition Property="ChangeColorType" Value="{x:Static em:ChangeColorType.Foreground}"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="root" Property="ToolTip"  Value="{Binding CheckToolTip}" />
+                                <Setter TargetName="path" Property="Fill"  Value="{Binding CheckColor}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ChangeColorType" Value="{x:Static em:ChangeColorType.Foreground}"/>
+                                <Condition Property="IsChecked" Value="false" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="root" Property="ToolTip"  Value="{Binding UnCheckToolTip}" />
+                                <Setter TargetName="path" Property="Fill"  Value="{Binding UnCheckColor}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="true" />
+                                <Condition Property="ChangeColorType" Value="{x:Static em:ChangeColorType.Background}"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="root" Property="ToolTip"  Value="{Binding CheckToolTip}" />
+                                <Setter TargetName="root" Property="Background"  Value="{Binding CheckColor}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ChangeColorType" Value="{x:Static em:ChangeColorType.Background}"/>
+                                <Condition Property="IsChecked" Value="false" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="root" Property="ToolTip"  Value="{Binding UnCheckToolTip}" />
+                                <Setter TargetName="root" Property="Background"  Value="{Binding UnCheckColor}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"  Value="0.5" />
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

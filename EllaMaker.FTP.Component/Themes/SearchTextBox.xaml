@@ -1,0 +1,26 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctl="clr-namespace:EllaMaker.FTP.Component" >
+    <Style TargetType="{x:Type ctl:SearchTextBox}">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctl:SearchTextBox}">
+                    <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                        <DockPanel>
+                            <ContentControl DockPanel.Dock="{TemplateBinding IconDock}" Content="{TemplateBinding Icon}" IsHitTestVisible="False" />
+                            <ctl:WatermarkTextBox  Text="{Binding Text,RelativeSource={RelativeSource Mode=TemplatedParent},UpdateSourceTrigger=PropertyChanged}" Watermark="{TemplateBinding Watermark}" Width="{TemplateBinding TextWidth}" WatermarkOpcity="{TemplateBinding WatermarkOpcity}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding TextBackground}" Padding="2"/>
+                        </DockPanel>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

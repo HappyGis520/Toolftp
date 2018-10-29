@@ -8,98 +8,71 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <!-- ListView的布局模板-->
-        <ControlTemplate x:Key="myLVTemplate" TargetType="{x:Type ListView}">
-            <Grid>
-                <ScrollViewer x:Name="ScrollViewerElement"
-            Background="White"
-            VerticalScrollBarVisibility="Auto"
-            HorizontalScrollBarVisibility="Disabled">
-                    <ItemsPresenter>
-                    </ItemsPresenter>
-                </ScrollViewer>
-            </Grid>
-        </ControlTemplate>
-        <!-- ListViewItem的布局模板-->
-        <DataTemplate x:Key="myLVItemTemplate">
-            <Grid Name="myGrid" Width="70" Margin="8,8,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Image Name="img" Source="{Binding Path=ISource}" HorizontalAlignment="Center"
-            Width="32" Height="32" Stretch="UniformToFill"
-            ToolTip="{Binding Path=FullFileName}" >
-                    <!--<Image.Effect>
-                        <effect:GrayscaleEffect x:Name="grayscaleEffect" DesaturationFactor="1.0"/>
-                    </Image.Effect>-->
-                </Image>
-                <TextBlock Name="imgTitle" Text="{Binding Path=FileName}" Grid.Row="1" HorizontalAlignment="Center"
-              FontSize="10" FontFamily="Arial"
-              ToolTip="{Binding Path=FullFileName}" Margin="4,4,4,4" TextTrimming="CharacterEllipsis" />
-            </Grid>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
-          AncestorType={x:Type ListViewItem}}, Path=IsSelected}" Value="True">
-                    <Setter TargetName="myGrid" Property="Background" Value="White"/>
-                    <Setter TargetName="imgTitle" Property="Background" Value="CadetBlue"/>
-                    <Setter TargetName="imgTitle" Property="Foreground" Value="White"/>
-                    <!--<Setter TargetName="img" Property="Effect">-->
-                        <!--<Setter.Value>
-                            <effect:GrayscaleEffect DesaturationFactor="0.5"/>
-                        </Setter.Value>-->
-                    <!--</Setter>-->
-                    <!--
-          <Setter TargetName="img" Property="Opacity" Value=".5"></Setter>
-          -->
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <!--下面这段代码不用，选中的时候边框有些边会变成蓝色（不是你希望的颜色）-->
-        <Style TargetType="{x:Type ListViewItem}" x:Key="ItemContainerStyle">
-            <Setter Property="Template">
+        <!--GridView Header样式 去除Gridview自带的Header框-->
+        <Style TargetType="{x:Type GridViewColumnHeader}" >
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FrameworkElement.Visibility" Value="Hidden"/>
+            <Setter Property="Height" Value="0"></Setter>
+        </Style>
+        <!--ListView 布局样式 使图片可以横向展示-->
+        <Style  TargetType="{x:Type ListView}" >
+            <Setter Property='ItemsPanel'>
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListViewItem}">
-                        <Border x:Name="Bd" Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" >
-                            <ContentPresenter/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsSelected" Value="true">
-                                <Setter Property="Background" TargetName="Bd" Value="White"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
+                    <ItemsPanelTemplate>
+                        <WrapPanel  Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource   AncestorType=ScrollContentPresenter}}"></WrapPanel>
+                    </ItemsPanelTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+        <!--ListView Item样式和点击后样式模板-->
+        <ControlTemplate x:Key="ListViewItemTemplate" TargetType="ListBoxItem">
+            <Border Name="Border">
+                <StackPanel>
+                    <GridViewRowPresenter>
+                    </GridViewRowPresenter>
+                </StackPanel>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter TargetName="Border"  Property="Background" Value="#ffffff"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="Border"  Property="Background" Value="#ffffff"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!--ListView Item样式和点击后样式-->
+        <Style x:Key="{x:Type ListViewItem}"  TargetType="ListViewItem">
+            <Setter Property="Template" Value="{StaticResource ListViewItemTemplate}"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        </Style>
     </UserControl.Resources>
     <Grid Margin="0,0,10,10">
-        <ListBox Name="lstFileManager" Background ="Transparent" ItemsSource="{Binding}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="10" Width="100" Height="120">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" ></RowDefinition>
-                            <RowDefinition Height="Auto" ></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Image Source="{Binding Pic}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="100"/>
-                        <TextBlock Text="{Binding Name}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="20"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="30"/>
-        </Grid.ColumnDefinitions>
-    </Grid>
+        <!-- 为了让WrapPanel 可以自带换行-->
+        <ListView Name="lstFileManager" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.View>
+                <GridView >
+                    <GridView.Columns>
+                        <GridViewColumn >
+                            <GridViewColumnHeader></GridViewColumnHeader>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="10 20 0 0" >
+                                        <Border Width="112" Height="167" Name="Bor_Movie1" >
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding MovieImageUrl}"></ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+                                        <Label MaxWidth="112"  Margin="0,10,0,0" >
+                                            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="12" FontWeight="Bold" Text="{Binding Movie_Tilte}" Height="27" Width="105"></TextBlock>
+                                        </Label>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>
